@@ -28,7 +28,7 @@ export default function Navbar() {
             className="lg:h-[15vh] h-[10vh] cursor-pointer"
           />
         </Link>
-        <div className="md:hidden invisible"></div>
+        <div className="md:hidden invisible">ewq</div>
 
         <div className="flex-1 items-center space-x-1 hidden md:flex justify-end">
           <div

@@ -17,15 +17,15 @@ export interface imageCardProps {
 export default function ImageCard({ data }: any) {
 
   return (
-    <div className="flex flex-col bg-white shadow-lg row-span-3 rounded-xl py-5 w-[500px]">
-      <div className=" h-1/4">
+    <div className="flex flex-col h-auto bg-white shadow-lg rounded-xl py-5 min-w-[350px] lg:w-[500px] snap-center">
+      <div className="">
         <img
           src={data.imageUrl}
           className="object-contain w-full h-[100px]"
           alt={data.imageName}
         ></img>
       </div>
-      <div className="px-5 h-1/2">
+      <div className="flex-1 px-5">
         <h1>{data.title}</h1>
         <h2 className="font-normal">{data.subTitle}</h2>
         <div className="flex flex-col space-y-1">
@@ -34,9 +34,9 @@ export default function ImageCard({ data }: any) {
           ))}
         </div>
       </div>
-      <div className="h-1/4 flex items-end justify-center">
+      <div className="flex-none flex items-end justify-center">
         <Link href="/">
-          <button className="bg-red-500 rounded-xl text-white px-10 py-2 hover:brightness-75">
+          <button className="bg-red-500 rounded-xl text-white px-6 py-1 my-2 hover:brightness-75 ">
             課程詳情
           </button>
         </Link>

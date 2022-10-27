@@ -137,3 +137,15 @@ nav button {
   display:flex;
   
 }
+
+.pill {
+  background-color: #68D391;
+  color: white;
+  border-radius: 30px;
+  font-weight: 500;
+  width: fit-content;
+
+  padding: 1.5vh 2vh ;
+  min-width: fit-content
+
+}

@@ -1,16 +1,19 @@
-import type { NextPage } from 'next'
-import { imageItems } from '@/components/home/imageItems';
-import Link from 'next/link';
-import ImageCard from '@/components/home/imageCard';
-
-
+import type { NextPage } from "next";
+import Link from "next/link";
+import { imageItems } from "@/components/home/imageItems";
+import ImageCard from "@/components/home/imageCard";
+import { homeProcedures } from "./components/home/homeProcedures";
+import HomeProcedureCard from "./components/home/homeProcedureCard";
+import SubtitleHeading from "./components/home/subtitleHeading";
+import RoadtestCard from "./components/home/roadtestCard";
+import InstructorCard from "./components/home/instructorCard";
+import MocktestCard from "./components/home/mocktestCard";
 
 const Home: NextPage = () => {
-
   return (
     <>
-      <section className="lg:px-20 lg:my-20">
-        <div className="flex flex-col text-gray-100 px-10 my-5 space-y-10">
+      <section className="lg:px-20 lg:my-20 max-w-[1400px] m-auto">
+        <div className="flex flex-col text-gray-100 px-10 mt-10 space-y-10">
           <p className="text-5xl font-black">新手報名</p>
           <p className="font-black">
             學神為你配對有認可資格的教車師傅，輕鬆考取駕駛執照
@@ -25,25 +28,71 @@ const Home: NextPage = () => {
           </div>
         </div>
       </section>
-      <section className="relative py-20">
-        <div className="h-[450px] lg:h-[600px] w-full flex overflow-x-scroll scroll whitespace-nowrap scroll-smooth space-x-5 px-[300px] py-10">
+      <section className="relative pt-10 pb-20 max-w-[1400px] m-auto">
+        <div className="h-full w-full flex  overflow-x-scroll scroll scroll-smooth space-x-5 py-10 px-5 snap-x lg:justify-center">
           {imageItems.map((imageItem) => (
             <ImageCard data={imageItem} key={imageItem.title}></ImageCard>
           ))}
         </div>
       </section>
+      <section className="my-10 max-w-[1400px] m-auto">
+        <SubtitleHeading
+          data={{
+            heading: "學車流程",
+            desc: "其實學車一啲都唔難，學神可以全程協助你",
+            link: "詳細流程",
+            url: "/procedure",
+          }}
+        />
+        <div className="w-full h-full min-h-[350px] flex overflow-x-scroll py-5 space-x-2 px-5 ">
+          {homeProcedures.map((procedure) => (
+            <HomeProcedureCard data={procedure} key={procedure.step} />
+          ))}
+        </div>
+      </section>
 
-      <div className="grid grid-cols-3 gap-4">
-        <div className="...">01</div>
-        <div className="...">02</div>
-        <div className="...">03</div>
-        <div className="col-span-2 ...">04</div>
-        <div className="...">05</div>
-        <div className="...">06</div>
-        <div className="col-span-2 ...">07</div>
-      </div>
+      <section className="my-10 py-10 ">
+        <div className="max-w-[1400px] m-auto">
+          <SubtitleHeading
+            data={{
+              heading: "路試資訊",
+              desc: "熟習路線的地圖和短片，上堂考試時都會安心啲",
+              link: "全部路線",
+              url: "/",
+            }}
+          />
+        </div>
+
+        <RoadtestCard />
+      </section>
+      <section className="my-10 py-10  max-w-[1400px] m-auto">
+        <SubtitleHeading
+          data={{
+            heading: "搵師傅",
+            desc: "經驗豐富的運輸署核准駕駛教師樂意帶領你成為學神",
+            link: "師傅名單",
+            url: "/instructor",
+          }}
+        />
+        <div className="w-full h-full min-h-[650px] flex overflow-x-scroll py-5 space-x-[6vh] px-5 snap-x ">
+          {homeProcedures.map((procedure) => (
+            <InstructorCard data={procedure} key={procedure.step} />
+          ))}
+        </div>
+      </section>
+      <section className="my-10 py-10  max-w-[1400px] m-auto">
+        <SubtitleHeading
+          data={{
+            heading: "筆試資訊",
+            desc: "學神提提你",
+            link: "",
+            url: "/instructor",
+          }}
+        />
+        <MocktestCard />
+      </section>
     </>
   );
-}
+};
 
-export default Home
+export default Home;
