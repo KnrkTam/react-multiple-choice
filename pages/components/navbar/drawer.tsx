@@ -6,26 +6,39 @@ export default function Drawer({nav} : {nav:boolean}) {
 
   return (
     <div
-      className={`${
+      className={` absolute duration-300 ease-in-out transition-all w-screen ${
         !nav
-          ? "hidden -translate-y-10"
-          : "absolute w-screen transition-all ease-in-out duration-300"
+          ? "top-[-500%] z-0 opacity-0"
+          : "top-20 z-20"
       }`}
     >
       <ul className="bg-white w-full px-8 space-y-4 md:hidden text-lg font-semibold">
-        <li className="flex justify-between items-center ">
-          <Link href="/mocktest">駕駛課程</Link>
-          <ArrowDownIcon className="stroke-2"></ArrowDownIcon>
+        <li>
+          <div className="flex justify-between items-center cursor-pointer ">
+            <Link href="/mocktest">駕駛課程</Link>
+            <ArrowDownIcon className="stroke-2"></ArrowDownIcon>
+          </div>
+          <div className="space-y-3 font-light px-3 text-md ">
+            <Link href={"/coursedetails/private"}>
+              <p className="hover:underline cursor-pointer">私家車</p>
+            </Link>
+            <Link href={"/coursedetails/van"}>
+              <p className="hover:underline cursor-pointer">輕型貨車</p>
+            </Link>
+            <Link href={"/coursedetails/retake"}>
+              <p className="hover:underline cursor-pointer">快期重考</p>
+            </Link>
+          </div>
         </li>
-        <li className="flex justify-between items-center">
+        <li className="flex justify-between items-center cursor-pointer">
           <Link href="/procedure">學車流程</Link>
           <ArrowDownIcon className="stroke-2"></ArrowDownIcon>
         </li>
-        <li className="flex justify-between items-center">
+        <li className="flex justify-between items-center cursor-pointer">
           <Link href="/mocktest">溫習材料</Link>
           <ArrowDownIcon className="stroke-2"></ArrowDownIcon>
         </li>
-        <li className="flex justify-between items-center">
+        <li className="flex justify-between items-center cursor-pointer">
           <Link href="/mocktest">教車師傅</Link>
         </li>
         <div className="my-4 flex flex-col">

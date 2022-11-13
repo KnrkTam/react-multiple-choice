@@ -110,42 +110,52 @@ nav button {
   height: fit-content;
   padding-left: 5%;
   padding-right: 5%;
-
 }
 .nav-btn {
   width: fit-content;
-  height: fit-content;
+  height: -webkit-fill-available;
   padding-left: 5%;
   padding-right: 5%;
-
 }
 
-
-.car-bg{
+.car-bg {
   background-image: url("/background.jpeg");
   background-repeat: no-repeat;
-  filter:brightness(90%);
+  filter: brightness(90%);
   object-fit: scale-down;
   /* background-size: cover; */
   /* height:80%; */
-  width:100%
-
+  width: 100%;
 }
 
 .img-card {
   width: 500px !important;
-  display:flex;
-  
+  display: flex;
 }
 
 .pill {
-  background-color: #68D391;
+  background-color: #68d391;
   color: white;
   border-radius: 30px;
   font-weight: 500;
   width: fit-content;
 
-  padding: 1.5vh 2vh ;
-  min-width: fit-content
+  padding: 1.5vh 2vh;
+  min-width: fit-content;
+}
 
+.procedure-step {
+  /* font-family:; */
+  letter-spacing: 0.3rem;
+  font-weight: 300;
+  font-size: 4.0rem;
+  line-height: 1;
+  padding: 1.25rem 0;
+  margin-top: 0; 
+}
+
+.procedure-title {
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1;
 }

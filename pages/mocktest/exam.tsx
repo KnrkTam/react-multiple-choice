@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import Clock from "@/components/clock";
@@ -6,76 +6,82 @@ import shuffleArr from "@/helpers/shuffleArr";
 
 type Answer = {
   question: number;
-  answer: string | null;
-  // correct_answer: string;
+  answer: number | null;
+  correct_answer_index: number;
 };
 
 const chosenAnswerArr: Answer[] = [];
+const questions: any[] = [];
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const url = "https://opentdb.com/api.php?amount=20&type=multiple";
   const response = await fetch(url);
   const data = await response.json();
+
+  data.results.map((element:any, i:number) => {
+    let mc_arr = shuffleArr([
+        element.correct_answer,
+        element.incorrect_answers[0],
+        element.incorrect_answers[1],
+      ]);
+    questions[i] = {
+      question: element.question,
+      questionIndex: i,
+      answerOptions: mc_arr,
+      correctAnswer: element.correct_answer,
+      chosenAnswer: null,
+      correctAnswerIndex: mc_arr.indexOf(element.correct_answer),
+    };
+  });
+
+
   return {
     props: {
-      questions: data.results,
+      questions: questions,
     },
   };
 };
 
-export default async function Exam({ questions }: any) {
-  console.log(questions)
+export default function Exam({ questions }: any) {
   const router = useRouter();
   const [progress, setProgress] = useState(1);
   const [question, setQuestion] = useState(questions[0]);
-  // const [correctAnswer, setCorrectAnswer] = useState<string>("");
-  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
-  // const [answerOptions, setAnswerOptions] = useState<string[]>([]);
+  const [chosenAnswer, setChosenAnswer] = useState<number | null>(null);
+  const multipleAnswer = ["A", "B", "C"];
 
-  let multipleAnswer = ["A", "B", "C"];
-  // let shuffledArr = shuffleArr([
-  //     question.correct_answer,
-  //     question.incorrect_answers[0],
-  //     question.incorrect_answers[1],
-  //   ])
-  //  let answer_options = [
-  //     question.correct_answer,
-  //     question.incorrect_answers[0],
-  //     question.incorrect_answers[1],
-  //   ];
-
-  // console.log("this is answers", shuffledArr);
 
   useEffect(() => {
     setQuestion(questions[progress - 1]);
+    setChosenAnswer(questions[progress - 1].chosenAnswer);
+
   }, [progress]);
 
   function nextQuestion() {
-    // chosenAnswerArr.push({
-    //   question: progress,
-    //   answer: chosenAnswer,
-    //   // correct_answer: correctAnswer,
-    // });
-    console.log("push answer", chosenAnswerArr);
-    if (progress < 21) {
-      setProgress(progress + 1);
+    questions[progress - 1].chosenAnswer = chosenAnswer
 
-      setChosenAnswer(null);
-      if (progress == 20) {
-        router.push("/mocktest/review");
-      }
+    if (progress < 20) {
+      setProgress(progress + 1);
+  
+    } else {
+      localStorage.setItem("result", JSON.stringify(questions));
+
+      router.push("/mocktest/review");
+      
+
     }
+
+    console.log(questions)
   }
 
   function lastQuestion() {
     if (progress > 1) {
-      setProgress(progress - 1);
+      setProgress(progress - 1)
     }
+
   }
 
-  function handleChosenAnswer(mc: string) {
+  function handleChosenAnswer(mc: number | null) {
     setChosenAnswer(mc);
-    console.log(chosenAnswerArr);
   }
 
   const progressStyle = {
@@ -85,14 +91,13 @@ export default async function Exam({ questions }: any) {
   return (
     <div className="flex flex-col mock bg-gray-100 min-h-[600px] items-center ">
       {/* Title */}
-      <h2 className="flex-one mt-10 w-full px-5">模擬筆試</h2>
+      <h2 className="flex-one mt-10 w-full px-5">Mock Test</h2>
       <div className="flex w-3/4 flex-col ">
         {/* Timer and question count */}
-
         <div className="flex w-full justify-between mb-2">
           <h3 className="flex-one text-2xl">{progress} / 20</h3>
           <div className="flex items-center">
-            <p>時限：</p>
+            <p className="mr-2">Time: {" " }</p>
             <Clock />
           </div>
         </div>
@@ -105,20 +110,24 @@ export default async function Exam({ questions }: any) {
             </div>
             {/* Answers Options */}
             <div className="flex flex-col h-full space-y-5">
-     
+              {question.answerOptions.map((mc:string, i:number) => (
+                <div className="" key={i}>
+                  {multipleAnswer[i]}. {mc}
+                </div>
+              ))}
             </div>
           </div>
           <div className="lg:w-1/3 flex flex-col justify-between space-y-3">
-            <p className="w-full">選擇你的答案：</p>
+            <p className="w-full">Choose your answer</p>
             <div className="space-x-3 w-full flex justify-between">
               {multipleAnswer.map((mc, key) => (
                 <button
                   key={key}
                   className={`hover:bg-gray-300 px-8 w-full bg-gray-200 border-black text-gray-800 rounded-lg border bold ${
-                    chosenAnswer == mc &&
+                    chosenAnswer == key &&
                     "bg-zinc-100 border-gray-500 text-gray-500"
                   }`}
-                  onClick={() => handleChosenAnswer(mc)}
+                  onClick={() => handleChosenAnswer(key)}
                 >
                   {mc}
                 </button>
@@ -134,13 +143,13 @@ export default async function Exam({ questions }: any) {
                 onClick={lastQuestion}
                 disabled={progress == 1}
               >
-                上一題
+                Last 
               </button>
               <button
                 className="border-black px-5 w-full rounded-lg border"
                 onClick={nextQuestion}
               >
-                下一題
+                Next
               </button>
             </div>
           </div>
@@ -153,6 +162,5 @@ export default async function Exam({ questions }: any) {
         ></div>
       </div>
     </div>
-    // <></>
   );
 }

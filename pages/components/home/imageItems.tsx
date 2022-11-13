@@ -9,6 +9,7 @@ export const imageItems = [
     ],
     imageUrl: "/images/homepageSuv.webp",
     imageName: "suvImage",
+    urlName: "private",
   },
   {
     title: "輕型貨車",
@@ -20,6 +21,7 @@ export const imageItems = [
     ],
     imageUrl: "/images/homepageVan.png",
     imageName: "vanImage",
+    urlName: "van",
   },
   {
     title: "快期重考",
@@ -30,6 +32,7 @@ export const imageItems = [
     ],
     imageUrl: "/images/homepageRetake.png",
     imageName: "retakeImage",
+    urlName: "retake",
   },
 ];
  

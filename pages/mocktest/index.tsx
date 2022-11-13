@@ -19,7 +19,7 @@ export default function index() {
             練習模式
           </button>
           <div className="flex space-x-1">
-            <Link href="/">
+            <Link href="/mocktest/review">
               <button className="bg-gray-100 border-2 border-gray-300 flex-1 rounded-2xl ">
                 上次結果
               </button>

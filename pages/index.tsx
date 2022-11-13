@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import { homeProcedures } from "@/components/home/homeProcedures";
 import { imageItems } from "@/components/home/imageItems";
+import HomeProcedureSession from "@/components/home/homeProcedureSession";
+
 import ImageCard from "@/components/home/imageCard";
-import { homeProcedures } from "./components/home/homeProcedures";
-import HomeProcedureCard from "./components/home/homeProcedureCard";
 import SubtitleHeading from "./components/home/subtitleHeading";
 import RoadtestCard from "./components/home/roadtestCard";
 import InstructorCard from "./components/home/instructorCard";
@@ -12,9 +13,9 @@ import MocktestCard from "./components/home/mocktestCard";
 const Home: NextPage = () => {
   return (
     <>
-      <section className="lg:px-20 lg:my-20 max-w-[1400px] m-auto">
+      <section className=" lg:my-10 max-w-[1400px] min-h-[400px] py-9 m-auto text-center md:text-left">
         <div className="flex flex-col text-gray-100 px-10 mt-10 space-y-10">
-          <p className="text-5xl font-black">新手報名</p>
+          <p className="text-5xl font-black lg:text-7xl ">新手報名</p>
           <p className="font-black">
             學神為你配對有認可資格的教車師傅，輕鬆考取駕駛執照
           </p>
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
             <ImageCard data={imageItem} key={imageItem.title}></ImageCard>
           ))}
         </div>
+        <div id="procedure"></div>
       </section>
       <section className="my-10 max-w-[1400px] m-auto">
         <SubtitleHeading
@@ -44,11 +46,7 @@ const Home: NextPage = () => {
             url: "/procedure",
           }}
         />
-        <div className="w-full h-full min-h-[350px] flex overflow-x-scroll py-5 space-x-2 px-5 ">
-          {homeProcedures.map((procedure) => (
-            <HomeProcedureCard data={procedure} key={procedure.step} />
-          ))}
-        </div>
+        <HomeProcedureSession />
       </section>
 
       <section className="my-10 py-10 ">
