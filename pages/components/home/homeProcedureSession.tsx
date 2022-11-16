@@ -4,7 +4,6 @@ import HomeProcedureCard from "./homeProcedureCard";
 import Link from "next/link";
 
 export default function homeProcedureSession() {
-  console.log('qwe',homeProcedures[0].imageUrl);
   return (
     <>
       {/* short version */}
@@ -13,14 +12,14 @@ export default function homeProcedureSession() {
           <HomeProcedureCard data={procedure} key={procedure.step} />
         ))}
       </div>
-      {/* Full width */}
+      {/* Full width, has to style with brute force */}
       <div className="w-full h-full min-h-[300px] max-h-[850px] py-5 px-5 hidden lg:grid grid-rows-5 grid-flow-col gap-5 min-h-[800px] text-white text-sm bg-no-repeat bg-contain">
         <div
           className={`${homeProcedures[0].bgColor} rounded-2xl row-span-2 col-span-2 px-5 relative overflow-hidden`}
         >
           <img
             src={`${homeProcedures[0].imageUrl}`}
-            className="absolute z-10 bottom-[-7vh] w-full right-[-40vh] scale-150"
+            className="absolute z-10 bottom-[-7vh] w-full right-[-40vh] scale-110"
           />
 
           <p className="procedure-step relative z-20">

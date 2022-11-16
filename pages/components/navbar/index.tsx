@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowDownIcon, HamburgerIcon, XIcon } from "../svg";
 import Drawer from "./drawer";
+import Logo from "./logo";
+import { FaCommentsDollar } from "react-icons/fa";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
@@ -10,6 +12,72 @@ export default function Navbar() {
   const [showMaterial, setShowMaterial] = useState(false);
 
   const toggleNav = () => setNav(!nav);
+
+  const navbars = [
+    {
+      label: "駕駛課程",
+      mouseEnterFunc: () => setShowCourse(true),
+      mouseLeaveFunc: () => setShowCourse(false),
+      state: showCourse,
+      items: [
+        {
+          href: "/coursedetails/private",
+          label: "私家車",
+        },
+        {
+          href: "/coursedetails/van",
+          label: "輕型貨車",
+        },
+        {
+          href: "/coursedetails/retake",
+          label: "快期重考",
+        },
+      ],
+      href: "",
+    },
+    {
+      label: "學車資訊",
+      mouseEnterFunc: () => setShowInfo(true),
+      mouseLeaveFunc: () => setShowInfo(false),
+      state: showInfo,
+      items: [
+        {
+          href: "/procedure",
+          label: "學車流程",
+        },
+        {
+          href: "/application",
+          label: "報名表格",
+        },
+      ],
+      href: "",
+    },
+    {
+      label: "溫習材料",
+      mouseEnterFunc: () => setShowMaterial(true),
+      mouseLeaveFunc: () => setShowMaterial(false),
+      state: showMaterial,
+      items: [
+        {
+          href: "/roadtest-info",
+          label: "路試資料",
+        },
+        {
+          href: "/mocktest",
+          label: "模擬筆試",
+        },
+      ],
+      href: "",
+    },
+    {
+      label: "教車師傅",
+      mouseEnterFunc: null,
+      mouseLeaveFunc: null,
+      state: null,
+      items: [],
+      href: "/mocktest",
+    },
+  ];
 
   return (
     <>
@@ -22,118 +90,53 @@ export default function Navbar() {
               <XIcon className=""></XIcon>
             )}
           </button>
-          <Link href="/">
-            {/* <img
-            src="/drivingLogo.svg"
-            alt="logo"
-            className="lg:h-[15vh] h-[10vh] cursor-pointer"
-          /> */}
-            <h1 className="font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-              學車
-              <span className="ml-2 text-slate-500">🚙</span>
-            </h1>
-          </Link>
+          <Logo />
           <div className="lg:hidden invisible ">invisible block</div>
 
           <div className="flex-1 max-w-[50%]  space-x-1 hidden md:flex justify-end">
-            <div
-              onMouseEnter={() => setShowCourse(true)}
-              onMouseLeave={() => setShowCourse(false)}
-              className="relative flex-1"
-            >
-              <button
-                className={`w-full hover:text-gray-500 bg-white rounded-lg h-full ${
-                  showCourse && "underline"
-                }`}
-              >
-                駕駛課程
-              </button>
-              <div
-                className={`bg-white flex w-full space-y-2 shadow-2xl flex flex-col p-2 rounded-lg ${
-                  showCourse ? "absolute top-[5vh] bg-white" : "hidden"
-                }`}
-              >
-                <Link href="/coursedetails/private">
-                  <a className="text-center p-2 hover:text-gray-500">私家車</a>
-                </Link>
-                <Link href="/coursedetails/van">
-                  <a className="text-center p-2 hover:text-gray-500">
-                    輕型貨車
-                  </a>
-                </Link>
-                <Link href="/coursedetails/retake">
-                  <a className="text-center p-2 hover:text-gray-500">
-                    快期重考
-                  </a>
-                </Link>
-              </div>
-            </div>
-
-            <div
-              onMouseEnter={() => setShowInfo(true)}
-              onMouseLeave={() => setShowInfo(false)}
-              className="relative flex-1"
-            >
-              <button
-                className={`w-full hover:text-gray-500 bg-white rounded-lg h-full ${
-                  showInfo && "underline"
-                }`}
-              >
-                學車資訊
-              </button>
-              <div
-                className={`bg-white flex w-full space-y-2 shadow-2xl flex flex-col p-2 rounded-lg ${
-                  showInfo ? "absolute top-[3vh] bg-white" : "hidden"
-                }`}
-              >
-                <Link href="/procedure">
-                  <a className="text-center p-2 hover:text-gray-500">
-                    學車資訊
-                  </a>
-                </Link>
-                <Link href="/application">
-                  <a className="text-center p-2 hover:text-gray-500">
-                    報名表格
-                  </a>
-                </Link>
-              </div>
-            </div>
-
-            <div
-              className="relative flex-1 "
-              onMouseEnter={() => setShowMaterial(true)}
-              onMouseLeave={() => setShowMaterial(false)}
-            >
-              <button
-                className={`w-full hover:text-gray-500 bg-white rounded-lg flex-grow h-full  ${
-                  showMaterial && "underline"
-                }`}
-              >
-                溫習材料
-              </button>
-              <div
-                className={`bg-white flex w-full space-y-2 shadow-2xl flex flex-col p-2 rounded-lg ${
-                  showMaterial ? "absolute top-[3vh] bg-white" : "hidden"
-                }`}
-              >
-                <Link href="/roadtest-info">
-                  <a className="text-center p-2 hover:text-gray-500">
-                    路試資訊
-                  </a>
-                </Link>
-                <Link href="/mocktest">
-                  <a className="text-center p-2 hover:text-gray-500">
-                    模擬筆試
-                  </a>
-                </Link>
-              </div>
-            </div>
-
-            <Link href="/mocktest">
-              <button className="hover:text-gray-500  bg-white rounded-lg ">
-                教車師傅
-              </button>
-            </Link>
+            {navbars.map((nav, i) => {
+              if (nav.items.length < 1)
+                return (
+                  <Link href={nav.href}>
+                    <button className="hover:text-gray-500  bg-white rounded-lg ">
+                      {nav.label}
+                    </button>
+                  </Link>
+                );
+              return (
+                <div
+                  onMouseEnter={
+                    nav.mouseEnterFunc ? nav.mouseEnterFunc : () => {}
+                  }
+                  onMouseLeave={
+                    nav.mouseLeaveFunc ? nav.mouseLeaveFunc : () => {}
+                  }
+                  className="relative flex-1"
+                  key={i}
+                >
+                  <button
+                    className={`w-full hover:text-gray-500 bg-white rounded-lg h-full ${
+                      nav.state && "underline"
+                    }`}
+                  >
+                    {nav.label}
+                  </button>
+                  <div
+                    className={`bg-white flex w-full space-y-2 shadow-2xl flex flex-col p-2 rounded-lg scale-110 ${
+                      nav.state ? "absolute top-[5vh] bg-white" : "hidden"
+                    }`}
+                  >
+                    {nav.items.map((item, j) => (
+                      <Link key={j} href={`${item.href}`}>
+                        <a className="text-center p-2 hover:text-gray-500">
+                          {item.label}
+                        </a>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <div className="hidden md:flex flex space-x-2 w-1/4 p-0 justify-end ">
             <Link href="/application">
