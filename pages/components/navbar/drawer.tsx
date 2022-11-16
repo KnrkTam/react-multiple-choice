@@ -9,7 +9,7 @@ export default function Drawer({nav} : {nav:boolean}) {
       className={` absolute duration-300 ease-in-out transition-all w-screen ${
         !nav
           ? "top-[-500%] z-0 opacity-0"
-          : "top-20 z-20"
+          : "top-[11vh] z-20"
       }`}
     >
       <ul className="bg-white w-full px-8 space-y-4 md:hidden text-lg font-semibold">

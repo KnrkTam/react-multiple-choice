@@ -29,7 +29,8 @@ export default function Navbar() {
             className="lg:h-[15vh] h-[10vh] cursor-pointer"
           /> */}
             <h1 className="font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-              Drivers
+              學車
+              <span className="ml-2 text-slate-500">🚙</span>
             </h1>
           </Link>
           <div className="lg:hidden invisible ">invisible block</div>
@@ -49,7 +50,7 @@ export default function Navbar() {
               </button>
               <div
                 className={`bg-white flex w-full space-y-2 shadow-2xl flex flex-col p-2 rounded-lg ${
-                  showCourse ? "absolute top-[3vh] bg-white" : "hidden"
+                  showCourse ? "absolute top-[5vh] bg-white" : "hidden"
                 }`}
               >
                 <Link href="/coursedetails/private">
