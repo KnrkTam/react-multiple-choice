@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import React from 'react'
+import Link from "next/link";
+import React from "react";
+import { ChevronRight } from "../svg";
 
-export default function SubtitleHeading({data}: any) {
+export default function SubtitleHeading({ data }: any) {
   return (
     <div
       id="sub-title"
@@ -13,11 +14,15 @@ export default function SubtitleHeading({data}: any) {
       </div>
       <span className="text-gray-800 flex">
         {data.link && (
-          <Link href={data.url}>
-            <>
-              <span className="hidden lg:block mr-2">{data.link}</span>
-              <span className="font-extrabold ">{">"}</span>
-            </>
+          <Link href={`${data.url}`}>
+            <a className="flex">
+              <span className="hidden lg:block mr-2 cursor-pointer">
+                {data.link}
+              </span>
+              <span className="font-extrabold cursor-pointer ">
+                <ChevronRight className="scale-75 stroke-2"/>
+              </span>
+            </a>
           </Link>
         )}
       </span>

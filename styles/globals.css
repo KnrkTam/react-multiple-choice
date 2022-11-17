@@ -95,28 +95,30 @@ a {
 
 button,
 a {
-  padding: 1% 2%;
+  padding: 1% 1rem;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+  word-break: keep-all;
+  width: max-content;
 }
 
 .btn-grp button:hover {
   filter: brightness(90%);
 }
 
-nav button {
-  width: fit-content;
+/* nav button {
+  width: max-content;
   height: fit-content;
   padding-left: 5%;
   padding-right: 5%;
 }
 .nav-btn {
-  width: fit-content;
+  width: max-content;
   height: -webkit-fill-available;
   padding-left: 5%;
   padding-right: 5%;
-}
+} */
 
 .car-bg {
   background-image: url("/background.jpeg");

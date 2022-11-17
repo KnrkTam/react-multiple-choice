@@ -7,7 +7,7 @@ export default function homeProcedureSession() {
   return (
     <>
       {/* short version */}
-      <div className="w-full h-full min-h-[350px] flex overflow-x-scroll py-5 space-x-2 px-5 lg:hidden">
+      <div className="w-full h-full min-h-[350px] flex overflow-x-scroll py-5 space-x-5 px-5 lg:hidden">
         {homeProcedures.map((procedure) => (
           <HomeProcedureCard data={procedure} key={procedure.step} />
         ))}

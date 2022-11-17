@@ -42,7 +42,7 @@ export default function ImageCard({ data }: any) {
         </div>
       </div>
       <div className="flex-none flex items-end justify-center py-5">
-        <Link href={`/coursedetails/${data.urlName}`}>
+        <Link href={`${data.urlName}`}>
           <button className="bg-red-500 rounded-xl text-white px-9 py-3 my-2 hover:brightness-75 ">
             課程詳情
           </button>

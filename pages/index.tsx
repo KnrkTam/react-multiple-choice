@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { homeProcedures } from "@/components/home/homeProcedures";
-import { imageItems } from "@/components/home/imageItems";
+import { courses } from "@/components/coursedetails/coursesItem";
 import HomeProcedureSession from "@/components/home/homeProcedureSession";
 
 import ImageCard from "@/components/home/imageCard";
@@ -13,9 +13,15 @@ import MocktestCard from "./components/home/mocktestCard";
 const Home: NextPage = () => {
   return (
     <>
-      <section className=" lg:my-10 max-w-[1400px] min-h-[400px] py-9 m-auto text-center md:text-left">
-        <div className="flex flex-col text-gray-100 px-10 mt-10 space-y-10">
-          <p className="text-5xl font-black lg:text-7xl ">新手報名</p>
+      <section className=" mt-5 max-w-[1400px] min-h-[200px] pt-9 m-auto text-center md:text-left">
+        <img
+          src="/background.jpeg"
+          className="absolute w-auto min-w-[1500px] max-h-[700px] top-[-10vh] left-0 brightness-75"
+        ></img>
+        <div className="flex flex-col text-gray-100 px-10 mt-10 space-y-5 relative z-20">
+          <p className="text-5xl font-black lg:text-5xl drop-shadow-2xl">
+            新手報名
+          </p>
           <p className="font-black">
             學神為你配對有認可資格的教車師傅，輕鬆考取駕駛執照
           </p>
@@ -29,10 +35,10 @@ const Home: NextPage = () => {
           </div>
         </div>
       </section>
-      <section className="relative pt-10 pb-20 max-w-[1400px] m-auto">
-        <div className="h-full w-full flex  overflow-x-scroll scroll scroll-smooth space-x-5 py-10 px-5 snap-x lg:justify-center">
-          {imageItems.map((imageItem) => (
-            <ImageCard data={imageItem} key={imageItem.title}></ImageCard>
+      <section className="relative pt-10 pb-20 max-w-[1400px]">
+        <div className="h-full w-full  flex overflow-x-scroll scroll scroll-smooth space-x-5 py-10 px-5 snap-x lg:justify-center">
+          {courses.map((course) => (
+            <ImageCard data={course} key={course.title}></ImageCard>
           ))}
         </div>
         <div id="procedure"></div>

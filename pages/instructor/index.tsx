@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Private() {
+export default function index() {
   return (
     <div>
-        PRivate page
+        Instructor page
     </div>
   )
 }

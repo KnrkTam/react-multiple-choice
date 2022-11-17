@@ -1,4 +1,4 @@
-export const imageItems = [
+export const courses = [
   {
     title: "私家車",
     subTitle: "課程收費",
@@ -7,9 +7,9 @@ export const imageItems = [
       { item: "代辦服務費", cost: 100 },
       { item: "考試租車費（按金)", cost: 900 },
     ],
-    imageUrl: "/images/homepageSuv.webp",
+    imageUrl: "/images/privatecar.webp",
     imageName: "suvImage",
-    urlName: "private",
+    urlName: "/coursedetails/privatecar",
   },
   {
     title: "輕型貨車",
@@ -19,9 +19,9 @@ export const imageItems = [
       { item: "代辦服務費", cost: 100 },
       { item: "考試租車費（按金)", cost: 900 },
     ],
-    imageUrl: "/images/homepageVan.png",
+    imageUrl: "/images/van.png",
     imageName: "vanImage",
-    urlName: "van",
+    urlName: "/coursedetails/van",
   },
   {
     title: "快期重考",
@@ -30,9 +30,9 @@ export const imageItems = [
       { item: "已有考期即時配對師傅", cost: null },
       { item: "考試租車費（按金)", cost: 900 },
     ],
-    imageUrl: "/images/homepageRetake.png",
+    imageUrl: "/images/retake.png",
     imageName: "retakeImage",
-    urlName: "retake",
+    urlName: "/coursedetails/retake",
   },
 ];
  

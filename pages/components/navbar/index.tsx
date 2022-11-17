@@ -3,86 +3,19 @@ import Link from "next/link";
 import { ArrowDownIcon, HamburgerIcon, XIcon } from "../svg";
 import Drawer from "./drawer";
 import Logo from "./logo";
-import { FaCommentsDollar } from "react-icons/fa";
+import NavItems from "./navItems";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
-  const [showCourse, setShowCourse] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
-  const [showMaterial, setShowMaterial] = useState(false);
-
-  const toggleNav = () => setNav(!nav);
-
-  const navbars = [
-    {
-      label: "駕駛課程",
-      mouseEnterFunc: () => setShowCourse(true),
-      mouseLeaveFunc: () => setShowCourse(false),
-      state: showCourse,
-      items: [
-        {
-          href: "/coursedetails/private",
-          label: "私家車",
-        },
-        {
-          href: "/coursedetails/van",
-          label: "輕型貨車",
-        },
-        {
-          href: "/coursedetails/retake",
-          label: "快期重考",
-        },
-      ],
-      href: "",
-    },
-    {
-      label: "學車資訊",
-      mouseEnterFunc: () => setShowInfo(true),
-      mouseLeaveFunc: () => setShowInfo(false),
-      state: showInfo,
-      items: [
-        {
-          href: "/procedure",
-          label: "學車流程",
-        },
-        {
-          href: "/application",
-          label: "報名表格",
-        },
-      ],
-      href: "",
-    },
-    {
-      label: "溫習材料",
-      mouseEnterFunc: () => setShowMaterial(true),
-      mouseLeaveFunc: () => setShowMaterial(false),
-      state: showMaterial,
-      items: [
-        {
-          href: "/roadtest-info",
-          label: "路試資料",
-        },
-        {
-          href: "/mocktest",
-          label: "模擬筆試",
-        },
-      ],
-      href: "",
-    },
-    {
-      label: "教車師傅",
-      mouseEnterFunc: null,
-      mouseLeaveFunc: null,
-      state: null,
-      items: [],
-      href: "/mocktest",
-    },
-  ];
+  const toggleNav = () => {
+    console.log('toggle!')
+    setNav(!nav);
+  };
 
   return (
     <>
-      <nav className="w-full sticky top-0 h-30 bg-white lg:h-[13vh] z-50 md:px-5">
-        <div className="flex items-center justify-between space-around h-full m-auto max-w-[1400px] flex-nowrap">
+      <nav className="w-full sticky top-0 h-30 bg-white lg:h-[13vh] z-50 lg:px-5">
+        <div className="flex items-center justify-between space-around h-full m-auto max-w-[1400px] flex-nowrap px-5">
           <button className="md:hidden" onClick={toggleNav}>
             {!nav ? (
               <HamburgerIcon className=""></HamburgerIcon>
@@ -91,54 +24,11 @@ export default function Navbar() {
             )}
           </button>
           <Logo />
-          <div className="lg:hidden invisible ">invisible block</div>
-
-          <div className="flex-1 max-w-[50%]  space-x-1 hidden md:flex justify-end">
-            {navbars.map((nav, i) => {
-              if (nav.items.length < 1)
-                return (
-                  <Link href={nav.href}>
-                    <button className="hover:text-gray-500  bg-white rounded-lg ">
-                      {nav.label}
-                    </button>
-                  </Link>
-                );
-              return (
-                <div
-                  onMouseEnter={
-                    nav.mouseEnterFunc ? nav.mouseEnterFunc : () => {}
-                  }
-                  onMouseLeave={
-                    nav.mouseLeaveFunc ? nav.mouseLeaveFunc : () => {}
-                  }
-                  className="relative flex-1"
-                  key={i}
-                >
-                  <button
-                    className={`w-full hover:text-gray-500 bg-white rounded-lg h-full ${
-                      nav.state && "underline"
-                    }`}
-                  >
-                    {nav.label}
-                  </button>
-                  <div
-                    className={`bg-white flex w-full space-y-2 shadow-2xl flex flex-col p-2 rounded-lg scale-110 ${
-                      nav.state ? "absolute top-[5vh] bg-white" : "hidden"
-                    }`}
-                  >
-                    {nav.items.map((item, j) => (
-                      <Link key={j} href={`${item.href}`}>
-                        <a className="text-center p-2 hover:text-gray-500">
-                          {item.label}
-                        </a>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="invisible">nav gap</div>
+          <div className="space-x-2 hidden md:flex items-center lg:ml-[30%]">
+            <NavItems />
           </div>
-          <div className="hidden md:flex flex space-x-2 w-1/4 p-0 justify-end ">
+          <div className="hidden md:flex flex space-x-2 w-1/5 p-0 justify-end ">
             <Link href="/application">
               <button className="hover:bg-red-600 bg-red-500 text-white rounded-lg  ">
                 立即報名
@@ -151,8 +41,8 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
+        <Drawer nav={nav} />
       </nav>
-      <Drawer nav={nav} />
     </>
   );
 }
