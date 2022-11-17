@@ -13,19 +13,19 @@ export default function Procedure() {
 
   return (
     <>
-      <div className="sticky top-20 z-40">
-        <div className="bg-white">
-          <div className="px-10">
-            <h1>學車流程</h1>
-          </div>
-          <Subheading />
+      {/* <div className="h-[500px] relative"> <span className="sticky top-[100px]">dot</span></div> */}
+
+      <div className="bg-white sticky top-0 z-40">
+        <div className="px-10 h-[100px]">
+          <h1>學車流程</h1>
         </div>
+        <Subheading />
       </div>
       <div className="h-full bg-gray-100 rounded-2xl m-30 px-[5%] py-5 divide-y divide-gray-200 divide-2 snap-y ">
         <div
           id="apply"
           className="snap-center"
-          style={{ scrollMarginTop: "30vh" }}
+          style={{ scrollMarginTop: "25vh" }}
         >
           <div className="flex justify-between pt-5">
             <p className="font-bold text-2xl">1. 網上報名</p>
@@ -62,7 +62,7 @@ export default function Procedure() {
         <div
           id="written-test"
           className=" snap-center "
-          style={{ scrollMarginTop: "30vh" }}
+          style={{ scrollMarginTop: "25vh" }}
         >
           <div className="flex justify-between pt-10">
             {" "}
@@ -96,7 +96,7 @@ export default function Procedure() {
         <div
           id="book"
           className="snap-center"
-          style={{ scrollMarginTop: "30vh" }}
+          style={{ scrollMarginTop: "25vh" }}
         >
           <div className="flex justify-between pt-10">
             <p className="font-bold text-2xl"> 3. 預約師傅</p>
@@ -126,7 +126,7 @@ export default function Procedure() {
         <div
           id="road-test"
           className="snap-center "
-          style={{ scrollMarginTop: "30vh" }}
+          style={{ scrollMarginTop: "25vh" }}
         >
           <div className="flex justify-between pt-10">
             <p className="font-bold text-2xl"> 4. 準備路試</p>
@@ -157,7 +157,7 @@ export default function Procedure() {
         <div
           id="license"
           className="snap-center "
-          style={{ scrollMarginTop: "30vh" }}
+          style={{ scrollMarginTop: "25vh" }}
         >
           <div className="flex justify-between pt-10">
             <p className="font-bold text-2xl">5. 成為P牌仔</p>

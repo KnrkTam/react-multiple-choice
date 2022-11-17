@@ -8,9 +8,8 @@ const Layout = ({ children, initData }: any) => {
     <div className="w-full">
       <Navbar />
       <main
-        className={`min-h-[100vh] relative overflow-hidden ${
-          grayBg.includes(router.pathname) && "bg-gray-100"
-        }`}
+        className={`${grayBg.includes(router.pathname) && "bg-gray-100"}
+        `}
       >
         <div className={`max-w-[1400px] min-h-[600px] mx-auto z-20 px-3`}>
           {children}

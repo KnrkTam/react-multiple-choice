@@ -28,7 +28,7 @@ export default function Navbar() {
           <div className="space-x-2 hidden md:flex items-center lg:ml-[30%]">
             <NavItems />
           </div>
-          <div className="hidden md:flex flex space-x-2 w-1/5 p-0 justify-end ">
+          <div className="hidden md:flex space-x-2 max-w-1/5 p-0 justify-end ">
             <Link href="/application">
               <button className="hover:bg-red-600 bg-red-500 text-white rounded-lg  ">
                 立即報名

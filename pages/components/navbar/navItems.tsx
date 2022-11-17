@@ -107,9 +107,9 @@ export default function NavItems() {
             >
               {nav.items.map((item, j) => (
                 <Link key={j} href={`${item.href}`}>
-                  <a className="text-center p-2 hover:text-gray-500">
+                  <button className="text-center p-2 hover:text-gray-500">
                     {item.label}
-                  </a>
+                  </button>
                 </Link>
               ))}
             </div>
