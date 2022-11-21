@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowDownIcon, HamburgerIcon, XIcon } from "../svg";
 import Drawer from "./drawer";
@@ -8,10 +8,15 @@ import NavItems from "./navItems";
 export default function Navbar() {
   const [nav, setNav] = useState(false);
   const toggleNav = () => {
-    console.log('toggle!')
     setNav(!nav);
   };
 
+  useEffect(() => {
+    const closeNav = () => setNav(false)
+    window.addEventListener("scroll", closeNav);
+    return () => window.removeEventListener("scroll", closeNav);
+  }, []);
+  
   return (
     <>
       <nav className="w-full sticky top-0 h-30 bg-white lg:h-[13vh] z-50 lg:px-5">

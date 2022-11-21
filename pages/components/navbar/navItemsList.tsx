@@ -1,8 +1,26 @@
 // import { useState } from "react";
 
+import { useState } from "react";
+
 // const [showCourse, setShowCourse] = useState(false);
 // const [showInfo, setShowInfo] = useState(false);
 // const [showMaterial, setShowMaterial] = useState(false);
+import React from 'react'
+
+export default function NavItemsList() {
+      const [showApply, setShowApply] = useState(false);
+      const [showWritten, setShowWritten] = useState(false);
+      const [showBook, setShowBook] = useState(false);
+      const [showRoad, setShowRoad] = useState(false);
+      const [showLicense, setShowLicense] = useState(false);
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+
 
 export const navbars = [
   {
@@ -12,7 +30,7 @@ export const navbars = [
     // state: showCourse,
     items: [
       {
-        href: "/coursedetails/private",
+        href: "/coursedetails/privatecar",
         label: "私家車",
       },
       {

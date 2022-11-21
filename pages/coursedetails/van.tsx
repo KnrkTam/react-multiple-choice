@@ -8,7 +8,7 @@ export default function VanCoursePage() {
   const router = useRouter();
   const path = router.pathname as string;
   return (
-    <div className="lg:px-5 mt-10">
+    <div className="lg:px-5 mb-10">
       <CourseNav pathname={path} />
       <div className="mt-10 px-5 flex flex-col-reverse lg:flex-row">
         <div className="lg:w-1/2 lg:px-5">
@@ -25,7 +25,7 @@ export default function VanCoursePage() {
           </div>
         </div>
 
-        <div className="flex items-end justify-center bg-gradient-to-b from-white via-blue-300 to-white brightness-120">
+        <div className="flex items-end justify-center bg-gradient-to-r from-white via-blue-300 to-white brightness-120">
           <img
             className="h-[250px] mx-10"
             src="/images/van.png"

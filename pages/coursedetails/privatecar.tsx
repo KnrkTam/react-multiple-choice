@@ -8,7 +8,7 @@ export default function PrivateCarCoursePage() {
   const router = useRouter();
   const path = router.pathname;
   return (
-    <div className=" my-10 ">
+    <div className=" mb-10 ">
       <CourseNav pathname={path} />
 
       <div className="mt-10 px-5 flex flex-col-reverse lg:flex-row">

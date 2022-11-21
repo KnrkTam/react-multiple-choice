@@ -15,7 +15,7 @@ export default function NavItems() {
        state: showCourse,
        items: [
          {
-           href: "/coursedetails/private",
+           href: "/coursedetails/privatecar",
            label: "私家車",
          },
          {

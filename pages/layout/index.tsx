@@ -1,3 +1,4 @@
+import Metatags from "@/components/Metatags";
 import Navbar from "@/components/navbar/index";
 import Footer from "@/layout/footer";
 import { useRouter } from "next/router";
@@ -6,6 +7,8 @@ const Layout = ({ children, initData }: any) => {
   const grayBg = ["/mocktest", "/mocktest/exam"];
   return (
     <div className="w-full">
+      <Metatags  />
+
       <Navbar />
       <main
         className={`${grayBg.includes(router.pathname) && "bg-gray-100"}
