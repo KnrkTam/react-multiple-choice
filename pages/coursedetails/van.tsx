@@ -27,7 +27,7 @@ export default function VanCoursePage() {
 
         <div className="flex items-end justify-center bg-gradient-to-r from-white via-blue-300 to-white brightness-120">
           <img
-            className="h-[250px] mx-10"
+            className="h-[250px] mx-10 object-contain"
             src="/images/van.png"
             alt="car"
           ></img>

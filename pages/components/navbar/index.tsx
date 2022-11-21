@@ -4,12 +4,18 @@ import { ArrowDownIcon, HamburgerIcon, XIcon } from "../svg";
 import Drawer from "./drawer";
 import Logo from "./logo";
 import NavItems from "./navItems";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
   const toggleNav = () => {
     setNav(!nav);
   };
+  const router = useRouter()
+
+  useEffect(() => {
+    setNav(false)
+  },[router.pathname])
 
   useEffect(() => {
     const closeNav = () => setNav(false)

@@ -14,7 +14,7 @@ export default function Readmore({
         className="flex items-center transition-all"
         onClick={() => setter(!state)}
       >
-        <p className={`${state && "hidden"} mr-2`}>查看更多 </p>
+        <p className={`${state && "hidden"} mr-2 font-normal`}>查看更多 </p>
         <ArrowDownIcon
           className={`stroke-2 w-5 h-5 duration-300 transition-all transform ${
             state && "rotate-180"

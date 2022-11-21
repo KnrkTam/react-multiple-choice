@@ -4,7 +4,7 @@ import Footer from "@/layout/footer";
 import { useRouter } from "next/router";
 const Layout = ({ children, initData }: any) => {
   const router = useRouter();
-  const grayBg = ["/mocktest", "/mocktest/exam"];
+  const grayBg = ["/mocktest", "/mocktest/exam", "/roadtest-info"];
   return (
     <div className="w-full">
       <Metatags  />

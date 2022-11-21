@@ -9,8 +9,8 @@ export default function Logo() {
             alt="logo"
             className="lg:h-[15vh] h-[10vh] cursor-pointer"
           /> */}
-      <h1 className="font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 flex">
-        <span className='break-normal w-[max-content]'>學車</span>
+      <h1 className="font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 flex cursor-pointer">
+        <span className="break-normal w-[max-content] ">學車</span>
         <span className="ml-2 text-slate-500">🚙</span>
       </h1>
     </Link>
