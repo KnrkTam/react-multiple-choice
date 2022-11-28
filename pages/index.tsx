@@ -13,11 +13,14 @@ import MocktestCard from "./components/home/mocktestCard";
 const Home: NextPage = () => {
   return (
     <>
-      <section className=" mt-5 max-w-[1400px] min-h-[200px] pt-9 m-auto text-center md:text-left">
-        <img
-          src="/background.jpeg"
-          className="absolute w-auto min-w-[1500px] max-h-[700px] top-[-10vh] left-0 brightness-75"
-        ></img>
+      <section className="mt-5 max-w-[1400px] min-h-[200px] pt-9 m-auto text-center md:text-left ">
+        <div className="overflow-hidden">
+          <img
+            src="/background.jpeg"
+            className="absolute w-screen sm:top-0 max-h-[700px] left-0 brightness-75 overflow-hidden"
+          ></img>
+        </div>
+
         <div className="flex flex-col text-gray-100 px-10 mt-10 space-y-5 relative z-20">
           <p className="text-5xl font-black lg:text-5xl drop-shadow-2xl">
             新手報名

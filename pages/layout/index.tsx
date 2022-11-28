@@ -14,7 +14,7 @@ const Layout = ({ children, initData }: any) => {
         className={`${grayBg.includes(router.pathname) && "bg-gray-100"}
         `}
       >
-        <div className={`max-w-[1400px] min-h-[600px] mx-auto z-20 px-3`}>
+        <div className={`max-w-[1400px] min-h-[600px] mx-auto z-20 px-3 ${router.pathname == '/' && "overflow-hidden"}`}>
           {children}
         </div>
       </main>

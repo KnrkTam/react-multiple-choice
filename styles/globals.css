@@ -107,6 +107,13 @@ a {
   filter: brightness(90%);
 }
 
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* nav button {
   width: max-content;
   height: fit-content;

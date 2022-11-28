@@ -94,17 +94,21 @@ export default function Drawer({ nav }: { nav: boolean }) {
                         items.state ? "rotate-180" : "rotate-0"
                       }`}
                     ></ArrowDownIcon>
-                  ): ""}
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div
-                  className={`space-y-3 font-light px-3 text-md ${
-                    !items.state ? "hidden" : "block"
+                  className={`space-y-3 font-light px-3 text-md transition-all transform ease-in-out duration-900 overflow-hidden pt-2 ${
+                    !items.state
+                      ? "opacity-0 h-0 max-h-0"
+                      : "opacity-1 block h-auto max-h-[500px]"
                   } `}
                 >
                   {items.items.map((item, j) => (
                     <Link href={`${item.href}`} key={j}>
                       <p
-                        className={`hover:underline cursor-pointer px-1 ${""}`}
+                        className={`hover:underline cursor-pointer px-1 h-auto  ${""}`}
                       >
                         {item.label}
                       </p>

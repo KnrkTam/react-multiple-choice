@@ -25,7 +25,7 @@ export default function Navbar() {
   
   return (
     <>
-      <nav className="w-full sticky top-0 h-30 bg-white lg:h-[13vh] z-50 lg:px-5">
+      <nav className="w-screen sticky top-0 h-30 bg-white lg:h-[13vh] z-50 lg:px-5">
         <div className="flex items-center justify-between space-around h-full m-auto max-w-[1400px] flex-nowrap px-5">
           <button className="md:hidden" onClick={toggleNav}>
             {!nav ? (

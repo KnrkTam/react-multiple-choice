@@ -13,13 +13,13 @@ export default function Procedure() {
 
   return (
     <>
-      {/* <div className="h-[500px] relative"> <span className="sticky top-[100px]">dot</span></div> */}
-
-      <div className="bg-white sticky top-0 z-40">
-        <div className="px-10 h-[100px]">
-          <h1>學車流程</h1>
+      <div className="bg-white z-40 sticky top-0">
+        <div className=" h-[100px]">
+          <h1 className="text-3xl">學車流程</h1>
         </div>
-        <Subheading />
+        <div className="w-full py-5">
+          <Subheading />
+        </div>
       </div>
       <div className="h-full bg-gray-100 rounded-2xl m-30 px-[5%] py-5 divide-y divide-gray-200 divide-2 snap-y ">
         <div
@@ -164,8 +164,8 @@ export default function Procedure() {
           </div>
           <Readmore state={showLicense} setter={setShowLicense} />
           <div
-            className={`space-y-5 my-5 text-lg text-gray-700 ${
-              showLicense ? "block" : "hidden"
+            className={`space-y-5 my-5 text-lg text-gray-700 transition-transform ease-in-out overflow-hidden transform duration-900 ${
+              showLicense ? " h-auto opacity-100" : "hidden h-0 opacity-0"
             } `}
           >
             <p>
