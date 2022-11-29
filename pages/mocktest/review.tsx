@@ -48,7 +48,7 @@ export default function Review(query: any) {
                   className={`${
                     resultsArr[q].chosenAnswer == i &&
                     "border-red-300 text-red-300"
-                  } border rounded-lg py-2 ${
+                  } border rounded-lg p-2 ${
                     resultsArr[q].correctAnswerIndex == i
                       ? "border-green-300 text-green-300"
                       : "border-gray-300 text-gray-300"
@@ -70,7 +70,7 @@ export default function Review(query: any) {
               return (
                 <>
                   <button
-                    className="bg-red-400 text-white text-xl rounded-lg p-8 w-10 h-10 font-bold flex items-center justify-center hover:brightness-[85%]"
+                    className={`${x.chosenAnswer == x.correctAnswerIndex ? 'bg-green-400' : 'bg-red-400'} text-white text-xl rounded-lg p-8 w-10 h-10 font-bold flex items-center justify-center hover:brightness-[85%]`}
                     key={x}
                     onClick={() => handleQuestionBlock(x.questionIndex)}
                   >

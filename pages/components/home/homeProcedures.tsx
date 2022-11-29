@@ -32,7 +32,7 @@ export const homeProcedures = [
     imageUrl: "/images/homepage/homepageProcess03.png",
     imageClass: "invert bottom-0 left-[20vh]",
     bgColor: "bg-zinc-500",
-    url: "/",
+    url: "/procedure",
   },
   {
     step: "04",

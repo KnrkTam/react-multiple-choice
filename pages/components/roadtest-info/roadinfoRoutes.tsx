@@ -8,7 +8,7 @@ export default function RoadInfoRoutes({ district }: { district: string }) {
     <div className="flex items-center flex-wrap py-10">
       {results?.routes.map((route, i) => (
         <Link href={`/roadtest-info/${district}/${route.label}`} key={i}>
-          <div className="w-1/3 flex flex-col items-center font-bold cursor-pointer p-1">
+          <div className="w-full sm:w-1/3 flex flex-col-reverse sm:flex-col sm:items-center font-bold cursor-pointer p-1">
             <img
               src={`${route.image ? route.image : "/test-image.jpeg"}`}
               alt=""

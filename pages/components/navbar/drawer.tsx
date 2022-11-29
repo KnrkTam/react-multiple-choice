@@ -73,51 +73,49 @@ export default function Drawer({ nav }: { nav: boolean }) {
 
   return (
     <div
-      className={`duration-300 ease-in-out transition-all w-screen  ${
-        // !nav ? "top-[-500%] z-0 opacity-0 absolute" : " top-[10.5vh] z-20"
-        !nav ? "absolute top-[-500%] h-0 opacity-0" : "block h-full"
+      className={`duration-500 ease-in-out transition-all w-screen transform overflow-hidden ${
+        !nav ? "absolute top-0 h-0 opacity-0" : " h-auto"
       }`}
     >
       <ul className="bg-white w-full px-8 space-y-4 lg:hidden text-lg font-semibold">
-        {nav &&
-          navbars.map((items, i) => {
-            return (
-              <li key={i}>
-                <div
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={items.clickEvent}
-                >
-                  <Link href={`${items.href}`}>{items.label}</Link>
-                  {items.items.length ? (
-                    <ArrowDownIcon
-                      className={`stroke-2 duration-300 transition-all transform ${
-                        items.state ? "rotate-180" : "rotate-0"
-                      }`}
-                    ></ArrowDownIcon>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div
-                  className={`space-y-3 font-light px-3 text-md transition-all transform ease-in-out duration-900 overflow-hidden pt-2 ${
-                    !items.state
-                      ? "opacity-0 h-0 max-h-0"
-                      : "opacity-1 block h-auto max-h-[500px]"
-                  } `}
-                >
-                  {items.items.map((item, j) => (
-                    <Link href={`${item.href}`} key={j}>
-                      <p
-                        className={`hover:underline cursor-pointer px-1 h-auto  ${""}`}
-                      >
-                        {item.label}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </li>
-            );
-          })}
+        {navbars.map((items, i) => {
+          return (
+            <li key={i}>
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={items.clickEvent}
+              >
+                <Link href={`${items.href}`}>{items.label}</Link>
+                {items.items.length ? (
+                  <ArrowDownIcon
+                    className={`stroke-2 duration-300 transition-all transform ${
+                      items.state ? "rotate-180" : "rotate-0"
+                    }`}
+                  ></ArrowDownIcon>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div
+                className={`space-y-3 font-light px-3 text-md transition-all transform ease-in-out duration-300 overflow-hidden pt-2 ${
+                  !items.state
+                    ? "opacity-0 h-0 "
+                    : "opacity-1 h-auto"
+                } `}
+              >
+                {items.items.map((item, j) => (
+                  <Link href={`${item.href}`} key={j}>
+                    <p
+                      className={`hover:underline cursor-pointer px-1 h-auto`}
+                    >
+                      {item.label}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </li>
+          );
+        })}
 
         <div className="my-4 flex flex-col">
           <Link href="/application">

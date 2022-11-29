@@ -29,12 +29,12 @@ export default function RetakeCoursePage() {
         <div className="min-h-[300px] z-10 bg-gradient-to-r from-white via-red-300 to-white brightness-120 w-full">
           <div className="relative w-full lg:h-4/5  lg:p-auto">
             <img
-              className="absolute right-0 lg:right-10 w-2/3 sm:w-1/2 top-[80px] lg:top-0 z-30"
+              className="absolute right-0 w-2/3 top-[90px]  -rotate-2 z-30 transform scale-x-[-1] sm:w-1/2 sm:bottom-5  sm:right-10 lg:top-0"
               src="/images/van.png"
               alt="car"
             ></img>
             <img
-              className="relative bottom-0 lg:w-1/2 w-2/3 mt-10 z-20"
+              className="relative bottom-0 lg:w-1/2 w-2/3  mt-10 z-20"
               src="/images/privatecar.webp"
               alt="car"
             ></img>

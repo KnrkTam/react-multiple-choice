@@ -13,7 +13,7 @@ export default function homeProcedureSession() {
         ))}
       </div>
       {/* Full width, has to style with brute force */}
-      <div className="w-full h-full min-h-[300px] max-h-[850px] py-5 px-5 hidden lg:grid grid-rows-5 grid-flow-col gap-5 min-h-[800px] text-white text-sm bg-no-repeat bg-contain">
+      <div className="w-full h-full min-h-[300px] max-h-[850px] py-5 px-5 hidden lg:grid grid-rows-5 grid-flow-col gap-5 text-white text-sm bg-no-repeat bg-contain">
         <div
           className={`${homeProcedures[0].bgColor} rounded-2xl row-span-2 col-span-2 px-5 relative overflow-hidden`}
         >
@@ -34,7 +34,7 @@ export default function homeProcedureSession() {
             ))}
           </div>
           <Link href={homeProcedures[0].url ? homeProcedures[0].url : "/"}>
-            <button className="group bg-red-500 rounded-2xl mt-5 px-10 py-3 z-20 relative">
+            <button className="group bg-red-500 rounded-2xl my-5 px-10 py-3 z-20 relative">
               立即報名
             </button>
           </Link>
