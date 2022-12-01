@@ -1,27 +1,52 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import React, { useEffect, useRef, useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import React, { useState } from "react";
+const schema = yup.object({
+  name: yup.string().required("please input name"),
+  contact: yup.string().required("please input contact"),
+});
+enum paymentEnum {
+  directPayment = "directPayment",
+  stripe = "stripe",
+}
+
+enum districtEnum {
+  hkIsland = "香港",
+  others = "九龍",
+}
 
 type FormData = {
   name: string;
-  contact: string;
+  contact: number;
   course: string;
   quali: string;
-  payment: string;
-  district: string;
+  payment: paymentEnum;
+  district: districtEnum;
   remark: string;
 };
 
 export default function ApplicationForm() {
-  const [district, setDistrict] = useState("九龍");
+  const [district, setDistrict] = useState("香港");
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormData>({ mode: "onChange" });
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    defaultValues: {
+      name: "Kenrick",
+      contact: 4379738229,
+    },
+  });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  console.log(errors);
+
+  const onSubmit: SubmitHandler<FormData> = (data) =>
+    console.log(data);
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
@@ -29,19 +54,24 @@ export default function ApplicationForm() {
         <label>中文名字</label>
         <input
           type="text"
-          name="name"
+          {...register("name")}
           className="border border-gray-800 p-2 my-2 rounded-lg w-full"
           placeholder="和身分證一致"
         />
+        <p className="bg-red-500 text-white rounded-lg">
+          {errors.name?.message}
+        </p>
       </div>
       <div className="flex flex-col">
         <label>聯絡電話</label>
         <input
-          type="text"
-          name="contact"
+          {...register("contact")}
           className="border border-gray-800 p-2 my-2 rounded-lg w-full"
           placeholder="+852"
         />
+        <p className="bg-red-500 text-white rounded-lg">
+          {errors.contact?.message}
+        </p>
       </div>
       <div className="flex flex-col">
         <label>報考課程</label>
@@ -62,7 +92,7 @@ export default function ApplicationForm() {
           {...register("quali")}
         >
           <option value="新手">新手</option>
-          <option value="補鐘">私家車棍波</option>
+          <option value="補鐘">補鐘</option>
           <option value="快期重考">快期重考</option>
           <option value="己有路試期">己有路試期</option>
         </select>
@@ -71,23 +101,26 @@ export default function ApplicationForm() {
         <label>報考地區</label>
         <div className="flex space-x-2 py-2">
           <button
-            type="button"
+            value="九龍"
             className={`${
               district == "九龍" ? " bg-gray-300" : " bg-white text-gray-400"
             } flex-1 rounded-lg border border-gray-300`}
             onClick={() => setDistrict("九龍")}
+            {...register("district")}
           >
             九龍或新界地區
           </button>
           <button
-            type="button"
+            value="香港"
             className={`${
               district == "香港" ? " bg-gray-300" : " bg-white text-gray-400"
             } flex-1 rounded-lg border border-gray-300`}
             onClick={() => setDistrict("香港")}
+            {...register("district")}
           >
             香港
           </button>
+          {/* <input {...register("district")} value={district} className="" /> */}
         </div>
       </div>
       <div className="flex flex-col">
@@ -101,7 +134,7 @@ export default function ApplicationForm() {
         <label>備註 </label>
         <span className="flex space-x-2 py-2">
           <textarea
-            name="remark"
+            {...register("remark")}
             className="rounded-xl border border-2 border-gray-300 p-2 w-full resize-none h-[100px]"
             placeholder="心水師傅 ，學車理想時間，上限為50個中文字"
           ></textarea>
@@ -117,6 +150,13 @@ export default function ApplicationForm() {
           <option value="stripe">網上付款</option>
         </select>
       </div>
+      <button
+        type="submit"
+        className="bg-zinc-500 text-white rounded-lg w-full my-10 py-2 lg:w-3/5"
+      >
+        提交申請
+      </button>
+      {/* <input type="submit" /> */}
     </form>
   );
 }
