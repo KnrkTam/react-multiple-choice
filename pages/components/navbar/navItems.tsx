@@ -78,7 +78,7 @@ export default function NavItems() {
       {navbars.map((nav, i) => {
         if (nav.items.length < 1)
           return (
-            <div className="" key={i}>
+            <div className="flex-1" key={i}>
               <Link href={nav.href}>
                 <button className="hover:text-gray-500  bg-white rounded-lg break-keep">
                   {nav.label}

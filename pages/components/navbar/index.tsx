@@ -36,7 +36,7 @@ export default function Navbar() {
           </button>
           <Logo />
           <div className="invisible">nav gap</div>
-          <div className="space-x-2 hidden md:flex items-center lg:ml-[30%]">
+          <div className="space-x-2 hidden md:flex items-center lg:ml-[30%] py-5 flex-1">
             <NavItems />
           </div>
           <div className="hidden md:flex space-x-2 max-w-1/5 p-0 justify-end ">

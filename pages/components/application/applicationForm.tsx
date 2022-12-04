@@ -1,11 +1,22 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import React, { useEffect, useRef, useState } from "react";
+import {
+  Input,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  VStack,
+  FormControl,
+  FormLabel,
+} from "@chakra-ui/react";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { ArrowDownIcon } from "../svg";
 
 const schema = yup.object({
-  name: yup.string().required("please input name"),
-  contact: yup.string().required("please input contact"),
+  name: yup.string().required("請輸入名稱"),
+  contact: yup.string().required("請輸入聯絡電話"),
 });
 enum paymentEnum {
   directPayment = "directPayment",
@@ -13,8 +24,8 @@ enum paymentEnum {
 }
 
 enum districtEnum {
-  hkIsland = "香港",
-  others = "九龍",
+  香港 = 0,
+  九龍 = 1,
 }
 
 type FormData = {
@@ -28,9 +39,10 @@ type FormData = {
 };
 
 export default function ApplicationForm() {
-  const [district, setDistrict] = useState("香港");
   const {
     register,
+    setValue,
+    getValues,
     handleSubmit,
     watch,
     formState: { errors },
@@ -40,50 +52,100 @@ export default function ApplicationForm() {
     defaultValues: {
       name: "Kenrick",
       contact: 4379738229,
+      district: 1,
     },
   });
 
   console.log(errors);
-
-  const onSubmit: SubmitHandler<FormData> = (data) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col">
-        <label>中文名字</label>
-        <input
-          type="text"
-          {...register("name")}
-          className="border border-gray-800 p-2 my-2 rounded-lg w-full"
-          placeholder="和身分證一致"
-        />
-        <p className="bg-red-500 text-white rounded-lg">
-          {errors.name?.message}
-        </p>
+        <FormControl>
+          <FormLabel>中文名字</FormLabel>
+          <Input
+            {...register("name")}
+            type="text"
+            placeholder="和身分證一致"
+            borderColor="black"
+            focusBorderColor="black.500"
+            rounded="xl"
+            className="rounded-xl"
+          ></Input>
+        </FormControl>
+        <p className="p-2 text-red-500">{errors.name?.message}</p>
       </div>
       <div className="flex flex-col">
         <label>聯絡電話</label>
-        <input
+        <Input
           {...register("contact")}
-          className="border border-gray-800 p-2 my-2 rounded-lg w-full"
+          type="number"
           placeholder="+852"
-        />
-        <p className="bg-red-500 text-white rounded-lg">
-          {errors.contact?.message}
-        </p>
+          borderColor="black"
+          focusBorderColor="black.500"
+          rounded="xl"
+        ></Input>
       </div>
       <div className="flex flex-col">
-        <label>報考課程</label>
-        <select
-          className="border border-gray-500 p-2 rounded-lg"
+        <FormControl>
+          <FormLabel>報考課程</FormLabel>
+          <Popover>
+            <PopoverTrigger>
+              <div>
+              {/* <div className="flex items-center justify-between p-2 w-full border border-gray-500 rounded-lg "> */}
+                {getValues("course")}
+                <span className="flex-1"></span>
+                <ArrowDownIcon className="w-5 h-5" />
+              </div>
+            </PopoverTrigger>
+            <PopoverContent className="flex">
+              <VStack className="w-full cursor-pointer border border-gray-300 rounded-lg">
+                <div
+                  className="p-2 hover:bg-gray-300 w-full"
+                  onClick={() => {
+                    setValue("course", "privateAuto");
+                  }}
+                >
+                  私家車自動波
+                </div>
+                <div
+                  className="p-2 hover:bg-gray-300 w-full"
+                  onClick={() => setValue("course", "privateManual")}
+                >
+                  私家車棍波
+                </div>
+                <div
+                  className="p-2 hover:bg-gray-300 w-full"
+                  onClick={() => setValue("course", "vanAuto")}
+                >
+                  輕型貨車自動波
+                </div>
+                <div
+                  className="p-2 hover:bg-gray-300  w-full"
+                  onClick={() => setValue("course", "vanManual")}
+                >
+                  輕型貨車棍波
+                </div>
+              </VStack>
+            </PopoverContent>
+          </Popover>
+        </FormControl>
+        {/* <label>報考課程</label> */}
+        {/* <Select
+          borderColor="blackAlpha.800"
+          bg="white"
+          // color={'orange'}
+          // placeholder="select option"
           {...register("course")}
         >
           <option value="privateAuto">私家車自動波</option>
           <option value="privateManual">私家車棍波</option>
           <option value="vanAuto">輕型貨車自動波</option>
           <option value="vanManual">輕型貨車棍波</option>
-        </select>
+        </Select> */}
+        <input {...register("course")}></input>
+        {/* <select className="border border-gray-500 p-2 rounded-lg"></select> */}
       </div>
       <div className="flex flex-col">
         <label>報考資格</label>
@@ -103,24 +165,28 @@ export default function ApplicationForm() {
           <button
             value="九龍"
             className={`${
-              district == "九龍" ? " bg-gray-300" : " bg-white text-gray-400"
-            } flex-1 rounded-lg border border-gray-300`}
-            onClick={() => setDistrict("九龍")}
-            {...register("district")}
+              getValues("district") == 1
+                ? " bg-gray-300"
+                : " bg-white text-gray-500"
+            } flex-1 rounded-xl border border-gray-300 p-2`}
+            // onClick={() => setDistrict("九龍")}
+            onClick={() => setValue("district", 1)}
           >
             九龍或新界地區
           </button>
           <button
             value="香港"
             className={`${
-              district == "香港" ? " bg-gray-300" : " bg-white text-gray-400"
-            } flex-1 rounded-lg border border-gray-300`}
-            onClick={() => setDistrict("香港")}
-            {...register("district")}
+              getValues("district") == 0
+                ? " bg-gray-300"
+                : " bg-white text-gray-500"
+            } flex-1 rounded-xl border border-gray-300 p-2`}
+            // onClick={() => setDistrict("香港")}
+            onClick={() => setValue("district", 0)}
           >
             香港
           </button>
-          {/* <input {...register("district")} value={district} className="" /> */}
+          <input className="hidden" {...register("district")} />
         </div>
       </div>
       <div className="flex flex-col">
