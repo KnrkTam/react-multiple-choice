@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Clock from "@/components/clock";
+import Clock from "@/../components/clock";
 import shuffleArr from "@/helpers/shuffleArr";
 
 type Answer = {
@@ -18,12 +18,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch(url);
   const data = await response.json();
 
-  data.results.map((element:any, i:number) => {
+  data.results.map((element: any, i: number) => {
     let mc_arr = shuffleArr([
-        element.correct_answer,
-        element.incorrect_answers[0],
-        element.incorrect_answers[1],
-      ]);
+      element.correct_answer,
+      element.incorrect_answers[0],
+      element.incorrect_answers[1],
+    ]);
     questions[i] = {
       question: element.question,
       questionIndex: i,
@@ -33,7 +33,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
       correctAnswerIndex: mc_arr.indexOf(element.correct_answer),
     };
   });
-
 
   return {
     props: {
@@ -49,35 +48,29 @@ export default function Exam({ questions }: any) {
   const [chosenAnswer, setChosenAnswer] = useState<number | null>(null);
   const multipleAnswer = ["A", "B", "C"];
 
-
   useEffect(() => {
     setQuestion(questions[progress - 1]);
     setChosenAnswer(questions[progress - 1].chosenAnswer);
-
   }, [progress]);
 
   function nextQuestion() {
-    questions[progress - 1].chosenAnswer = chosenAnswer
+    questions[progress - 1].chosenAnswer = chosenAnswer;
 
     if (progress < 20) {
       setProgress(progress + 1);
-  
     } else {
       localStorage.setItem("result", JSON.stringify(questions));
 
       router.push("/mocktest/review");
-      
-
     }
 
-    console.log(questions)
+    console.log(questions);
   }
 
   function lastQuestion() {
     if (progress > 1) {
-      setProgress(progress - 1)
+      setProgress(progress - 1);
     }
-
   }
 
   function handleChosenAnswer(mc: number | null) {
@@ -97,7 +90,7 @@ export default function Exam({ questions }: any) {
         <div className="flex w-full justify-between mb-2">
           <h3 className="flex-one text-2xl">{progress} / 20</h3>
           <div className="flex items-center">
-            <p className="mr-2">Time: {" " }</p>
+            <p className="mr-2">Time: </p>
             <Clock />
           </div>
         </div>
@@ -110,7 +103,7 @@ export default function Exam({ questions }: any) {
             </div>
             {/* Answers Options */}
             <div className="flex flex-col h-full space-y-5">
-              {question.answerOptions.map((mc:string, i:number) => (
+              {question.answerOptions.map((mc: string, i: number) => (
                 <div className="" key={i}>
                   {multipleAnswer[i]}. {mc}
                 </div>
@@ -143,7 +136,7 @@ export default function Exam({ questions }: any) {
                 onClick={lastQuestion}
                 disabled={progress == 1}
               >
-                Last 
+                Last
               </button>
               <button
                 className="border-black px-5 w-full rounded-lg border"

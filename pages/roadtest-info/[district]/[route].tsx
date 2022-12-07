@@ -1,7 +1,7 @@
 import React from "react";
-import { ArrowDownIcon } from "@/components/svg";
+import { ArrowDownIcon } from "@/../components/svg";
 import { FaMapPin } from "react-icons/fa";
-import { districts } from "@/components/roadtest-info/roadtestRoute";
+import { districts } from "@/../components/roadtest-info/roadtestRoute";
 
 // export async function getServerSideProps({ query }: any) {
 //   const { district, route } = query;
@@ -14,14 +14,12 @@ import { districts } from "@/components/roadtest-info/roadtestRoute";
 //   };
 // }
 
-
-type staticPathDataProp = 
-  {
-    params: {
-      district: string;
-      route:string;
-    }
+type staticPathDataProp = {
+  params: {
+    district: string;
+    route: string;
   };
+};
 
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
@@ -29,10 +27,10 @@ export async function getStaticPaths() {
   districts.map((district) => {
     district.routes.map((route) => {
       staticPathData.push({
-        params: {district: district.label, route: route.label}
-      })
-    })
-  })
+        params: { district: district.label, route: route.label },
+      });
+    });
+  });
 
   return {
     paths: staticPathData,
@@ -40,7 +38,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps( context: any ) {
+export async function getStaticProps(context: any) {
   console.log(context);
   const { district, route } = context.params;
 
@@ -48,8 +46,8 @@ export async function getStaticProps( context: any ) {
     // Passed to the page component as props
     props: {
       district,
-      route
-    }
+      route,
+    },
   };
 }
 

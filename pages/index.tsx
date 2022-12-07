@@ -1,14 +1,14 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { homeProcedures } from "@/components/home/homeProcedures";
-import { courses } from "@/components/coursedetails/coursesItem";
-import HomeProcedureSession from "@/components/home/homeProcedureSession";
+import { homeProcedures } from "@/../components/home/homeProcedures";
+import { courses } from "@/../components/coursedetails/coursesItem";
+import HomeProcedureSession from "@/../components/home/homeProcedureSession";
 
-import ImageCard from "@/components/home/imageCard";
-import SubtitleHeading from "./components/home/subtitleHeading";
-import RoadtestCard from "./components/home/roadtestCard";
-import InstructorCard from "./components/home/instructorCard";
-import MocktestCard from "./components/home/mocktestCard";
+import ImageCard from "@/../components/home/imageCard";
+import SubtitleHeading from "../components/home/subtitleHeading";
+import RoadtestCard from "../components/home/roadtestCard";
+import InstructorCard from "../components/home/instructorCard";
+import MocktestCard from "../components/home/mocktestCard";
 
 const Home: NextPage = () => {
   return (
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
             src="/background.jpeg"
             // className="absolute w-screen sm:min-w-[700px]  max-h-[700px] left-0 brightness-75 overflow-hidden"
             className="absolute h-[500px] object-cover left-0 right-0 w-screen brightness-75"
-            ></img>
+          ></img>
         </div>
 
         <div className="flex flex-col text-gray-100 px-10 mt-10 space-y-5 relative z-20">

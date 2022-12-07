@@ -1,8 +1,8 @@
-import CourseNav from '@/components/coursedetails/courseNav';
-import { ChevronRight } from '@/components/svg';
-import Link from 'next/link';
+import CourseNav from "@/../components/coursedetails/courseNav";
+import { ChevronRight } from "@/../components/svg";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import React from 'react'
+import React from "react";
 
 export default function VanCoursePage() {
   const router = useRouter();

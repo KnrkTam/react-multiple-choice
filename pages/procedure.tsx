@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import Subheading from "./components/procedure/subheadnav";
-import Readmore from "./components/procedure/readmore";
-import PaymentTerms from "./components/procedure/paymentTerms";
+import Subheading from "../components/procedure/subheadnav";
+import Readmore from "../components/procedure/readmore";
+import PaymentTerms from "../components/procedure/paymentTerms";
 
 export default function Procedure() {
   const [showApply, setShowApply] = useState(false);

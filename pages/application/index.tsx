@@ -1,12 +1,13 @@
-import ApplicationForm from "@/components/application/applicationForm";
-import Disclaimer from "@/components/application/disclaimer";
-import ProgressBar from "@/components/application/progressBar";
+import ApplicationForm from "@/../components/application/ApplicationForm";
+import Disclaimer from "@/../components/application/Disclaimer";
+import ProgressBar from "@/../components/application/ProgressBar";
 import React from "react";
 import { Heading } from "@chakra-ui/react";
 
+
 export default function application() {
   return (
-    <div className="mx-5">
+    <div className="mx-5 mb-20">
       <div className="w-4/5 max-w-[800px]  m-auto">
         <ProgressBar />
       </div>

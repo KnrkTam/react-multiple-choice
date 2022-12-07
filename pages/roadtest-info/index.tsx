@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { districts } from "@/components/roadtest-info/roadtestRoute";
-import RoadInfoRoutes from "@/components/roadtest-info/roadinfoRoutes";
+import { districts } from "@/../components/roadtest-info/roadtestRoute";
+import RoadInfoRoutes from "@/../components/roadtest-info/roadinfoRoutes";
 
 export default function RoadTestInfo() {
   const [districtState, setDistrictState] = useState("九龍");
